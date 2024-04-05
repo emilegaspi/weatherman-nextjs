@@ -2,6 +2,8 @@ import '@/app/ui/globals.css'
 import { inter } from '@/app/ui/fonts'
 import type { Metadata } from 'next'
 
+import ReduxProvider from '@/app/lib/store-provider'
+
 export const metadata: Metadata = {
 	title: {
 		template: '%s | Weatherman',
@@ -17,7 +19,9 @@ type Props = {
 export default function RootLayout({ children }: Readonly<Props>) {
 	return (
 		<html lang="en">
-			<body className={`${inter.className} antialiased`}>{children}</body>
+			<body className={`${inter.className} antialiased`}>
+				<ReduxProvider>{children}</ReduxProvider>
+			</body>
 		</html>
 	)
 }
